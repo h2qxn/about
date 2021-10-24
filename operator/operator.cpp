@@ -11,7 +11,8 @@ class wallet
         int get();        // 返回钱包中有多少钱
         int add(int);    // 往钱包中塞钱
         int minus(int);  // 取钱 
-        friend wallet operator + (const wallet &x, const wallet &y);
+        //friend wallet operator + (const wallet &x, const wallet &y);
+        wallet operator + (const wallet & y);
     private:
         int size;     //钱包的外观大小
         int price;    //钱包的价格
@@ -43,10 +44,18 @@ int wallet::minus(int n)
     return 0;
 }
 
+/*
 wallet operator+(const wallet&x, const wallet &y)
 {
     wallet tmp;
     tmp.money = x.money + y.money;
+    return tmp;
+}
+*/
+wallet wallet::operator+( const wallet &y)
+{
+    wallet tmp;
+    tmp.money = this->money + y.money;
     return tmp;
 }
 
